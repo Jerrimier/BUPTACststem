@@ -1,9 +1,13 @@
 #pragma once
 
 #include <QtWidgets/QMainWindow>
+#include <qvector.h>
 #include "ui_ACsystemServer.h"
 #include "TcpSocket.h"
 #include "TcpServer.h"
+#include "Scheduler.h"
+#include "ACController.h"
+
 
 class ACsystemServer : public QMainWindow
 {
@@ -11,7 +15,9 @@ class ACsystemServer : public QMainWindow
 
 public:
     ACsystemServer(QWidget *parent = Q_NULLPTR);
-
+    Scheduler scheduler;
+    ACController acController;
+    void ConnectServerScheduler();
 
 private slots:
     void receiveData(QByteArray data);
